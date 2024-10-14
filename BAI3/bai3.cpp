@@ -1,7 +1,13 @@
-#include<bits/stdc++.h>
 #include "bai3.h"
+#include <iostream>
+#include <cmath>
 using namespace std;
 
+Diem::Diem() : Hoanh(0), Tung(0) {}
+
+Diem::Diem(double Hoanh, double Tung) : Hoanh(Hoanh), Tung(Tung) {}
+
+Diem::Diem(const Diem &x) : Hoanh(x.Hoanh), Tung(x.Tung) {}
 
 void Diem::Xuat() {
     cout << "(" << Hoanh << ", " << Tung << ")" << endl;
@@ -16,26 +22,31 @@ double Diem::GetHoanhDo() {
 }
 
 void Diem::SetTungDo(double Tung) {
-    this -> Tung = Tung;
+    this->Tung = Tung;
 }
 
 void Diem::SetHoanhDo(double Hoanh) {
-    this -> Hoanh = Hoanh;
+    this->Hoanh = Hoanh;
 }
 
 void Diem::TinhTien(double dx, double dy) {
-    this -> Hoanh += dx;
-    this -> Tung += dy;
+    Hoanh += dx;
+    Tung += dy;
 }
 
 void Diem::Quay(double radian) {
     double x_old = Hoanh;
     double y_old = Tung;
 
-    this -> Hoanh = x_old * cos(radian) - y_old * sin(radian);
-    this -> Tung = x_old * sin(radian) + y_old * cos(radian);
+    Hoanh = x_old * cos(radian) - y_old * sin(radian);
+    Tung = x_old * sin(radian) + y_old * cos(radian);
 }
 
+DaGiac::DaGiac() : n(0), Dinh(nullptr) {}
+
+DaGiac::~DaGiac() {
+    delete[] Dinh;
+}
 
 void DaGiac::Nhap() {
     cout << "Nhap so dinh cua da giac: ";
@@ -55,7 +66,6 @@ void DaGiac::Xuat() {
     for (int i = 0; i < n; i++) {
         cout << "Dinh " << i + 1 << ": ";
         Dinh[i].Xuat();
-        cout << endl;
     }
 }
 
