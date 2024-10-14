@@ -21,6 +21,5 @@ public:
 
     void Nhap();
 
-//tinh dien tich cua da giac
     double DienTich();
 };
