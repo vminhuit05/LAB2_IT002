@@ -3,9 +3,8 @@ using namespace std;
 
 class PhanSo {
 private:
-    int tu, mau; // numerator and denominator
+    int tu, mau;
 public:
-    // Constructor
     PhanSo() {
         tu = 0;
         mau = 1;
@@ -13,10 +12,9 @@ public:
 
     PhanSo(int tu, int mau) {
         this->tu = tu;
-        this->mau = (mau == 0) ? 1 : mau; // Avoid division by 0
+        this->mau = (mau == 0) ? 1 : mau;
     }
 
-    // Function to simplify a fraction
     int gcd(int a, int b) {
         if (b == 0) return a;
         return gcd(b, a % b);
@@ -32,13 +30,12 @@ public:
         }
     }
 
-    // Input and Output functions
     void Nhap() {
         cout << "Nhap tu so: ";
         cin >> tu;
         cout << "Nhap mau so: ";
         cin >> mau;
-        if (mau == 0) mau = 1; // Avoid division by 0
+        if (mau == 0) mau = 1;
         simplify();
     }
 
@@ -46,7 +43,6 @@ public:
         cout << tu << "/" << mau << endl;
     }
 
-    // Comparison operator to find the larger/smaller fraction
     bool operator>(const PhanSo &ps) {
         return tu * ps.mau > mau * ps.tu;
     }
@@ -61,7 +57,6 @@ private:
     PhanSo *arr;
     int size;
 public:
-    // Constructor
     arrPhanSo() {
         arr = nullptr;
         size = 0;
@@ -71,7 +66,6 @@ public:
         delete[] arr;
     }
 
-    // Function to input fractions
     void nhap(int n) {
         size = n;
         arr = new PhanSo[n];
@@ -81,8 +75,7 @@ public:
         }
     }
 
-    // Function to get the largest fraction
-    PhanSo LayPSLonNhat() {
+    PhanSo laypsln() {
         PhanSo max = arr[0];
         for (int i = 1; i < size; i++) {
             if (arr[i] > max) {
@@ -92,8 +85,7 @@ public:
         return max;
     }
 
-    // Function to get the smallest fraction
-    PhanSo LayPSNhoNhat() {
+    PhanSo laypsnn() {
         PhanSo min = arr[0];
         for (int i = 1; i < size; i++) {
             if (arr[i] < min) {
@@ -113,10 +105,10 @@ int main() {
     a.nhap(n);
 
     cout << "Phan so lon nhat la: " << endl;
-    a.LayPSLonNhat().Xuat();
+    a.laypsln().Xuat();
 
     cout << "Phan so nho nhat la: " << endl;
-    a.LayPSNhoNhat().Xuat();
+    a.laypsnn().Xuat();
 
     return 0;
 }
