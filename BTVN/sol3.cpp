@@ -1,5 +1,4 @@
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 
 class phanso {
@@ -12,15 +11,10 @@ public:
         rutgon();
     }
 
-    int gcd(int a, int b) {
-        if (b == 0) return a;
-        return gcd(b, a % b);
-    }
-
     void rutgon() {
-        int gcdValue = gcd(abs(tu), abs(mau));
-        tu /= gcdValue;
-        mau /= gcdValue;
+        int gcd = __gcd(abs(tu), abs(mau));
+        tu /= gcd;
+        mau /= gcd;
         if (mau < 0) {
             tu = -tu;
             mau = -mau;
