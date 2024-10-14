@@ -2,24 +2,22 @@
 #include <vector>
 using namespace std;
 
-// Class representing a fraction
-class PhanSo {
+class phanso {
 public:
-    int tu, mau; // Numerator and denominator
+    int tu, mau;
 
-    PhanSo(int tu = 0, int mau = 1) {
+    phanso(int tu = 0, int mau = 1) {
         this->tu = tu;
-        this->mau = (mau == 0) ? 1 : mau; // Prevent division by zero
-        rutGon();
+        this->mau = (mau == 0) ? 1 : mau;
+        rutgon();
     }
 
-    // Function to simplify the fraction
     int gcd(int a, int b) {
         if (b == 0) return a;
         return gcd(b, a % b);
     }
 
-    void rutGon() {
+    void rutgon() {
         int gcdValue = gcd(abs(tu), abs(mau));
         tu /= gcdValue;
         mau /= gcdValue;
@@ -29,34 +27,29 @@ public:
         }
     }
 
-    // Overloading addition operator
-    PhanSo operator+(const PhanSo& other) const {
-        PhanSo result;
+    phanso operator+(const phanso& other) const {
+        phanso result;
         result.tu = tu * other.mau + mau * other.tu;
         result.mau = mau * other.mau;
-        result.rutGon();
+        result.rutgon();
         return result;
     }
 
-    // Overloading equality operator to compare two fractions
-    bool operator==(const PhanSo& other) const {
+    bool operator==(const phanso& other) const {
         return tu == other.tu && mau == other.mau;
     }
 
-    // Output the fraction
     void Xuat() const {
         cout << tu << "/" << mau << endl;
     }
 };
 
-// Function to find subsets of fractions that sum up to a target fraction
-void timTapCon(const vector<PhanSo>& arr, const PhanSo& target) {
+void timtcon(const vector<phanso>& arr, const phanso& target) {
     int n = arr.size();
     bool found = false;
 
-    // Using a bitmask to find all subsets
     for (int mask = 1; mask < (1 << n); ++mask) {
-        PhanSo sum; // Starting sum with 0/1
+        phanso sum;
 
         cout << "Tap con: ";
         for (int i = 0; i < n; ++i) {
@@ -66,7 +59,6 @@ void timTapCon(const vector<PhanSo>& arr, const PhanSo& target) {
             }
         }
 
-        // If the subset sum matches the target fraction
         if (sum == target) {
             cout << " -> Tong bang phan so dich." << endl;
             found = true;
@@ -85,26 +77,26 @@ int main() {
     cout << "Nhap so luong phan so: ";
     cin >> n;
 
-    vector<PhanSo> arr(n);
+    vector<phanso> arr(n);
     cout << "Nhap danh sach cac phan so: " << endl;
     for (int i = 0; i < n; ++i) {
         cout << "Nhap tu so thu " << i + 1 << ": ";
         cin >> arr[i].tu;
         cout << "Nhap mau so thu " << i + 1 << ": ";
         cin >> arr[i].mau;
-        arr[i].rutGon();
+        arr[i].rutgon();
     }
     
-    PhanSo phanSoDich;
+    phanso psdich;
     cout << "Nhap phan so dich: " << endl;
     cout << "Nhap tu so dich: ";
-    cin >> phanSoDich.tu;
+    cin >> psdich.tu;
     cout << "Nhap mau so dich: ";
-    cin >> phanSoDich.mau;
+    cin >> psdich.mau;
 
-    phanSoDich.rutGon();
+    psdich.rutgon();
 
-    timTapCon(arr, phanSoDich);
+    timtcon(arr, psdich);
 
     return 0;
 }
