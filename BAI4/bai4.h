@@ -12,6 +12,5 @@ public:
     void Nhap();
 
     void Xuat();
-//tong diem 3 mon
     float Tong();
 };
