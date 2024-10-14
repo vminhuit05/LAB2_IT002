@@ -1,13 +1,10 @@
 #include "bai2.h"
-#include <iostream>
-#include <cmath> // For cos and sin functions
+#include <bits/stdc++.h>
 
 using namespace std;
 
-// Default constructor
 TamGiac::TamGiac() : x1(0), y1(0), x2(0), y2(0), x3(0), y3(0) {}
 
-// Method to input the vertices of the triangle
 void TamGiac::Nhap() {
     cout << "Nhap toa do dinh A (x1, y1): ";
     cin >> x1 >> y1;
@@ -17,14 +14,12 @@ void TamGiac::Nhap() {
     cin >> x3 >> y3;
 }
 
-// Method to output the vertices of the triangle
 void TamGiac::Xuat() {
     cout << "Dinh A: (" << x1 << ", " << y1 << ")" << endl;
     cout << "Dinh B: (" << x2 << ", " << y2 << ")" << endl;
     cout << "Dinh C: (" << x3 << ", " << y3 << ")" << endl;
 }
 
-// Method to translate the triangle
 void TamGiac::TinhTien(double dx, double dy) {
     x1 += dx;
     y1 += dy;
@@ -34,7 +29,6 @@ void TamGiac::TinhTien(double dx, double dy) {
     y3 += dy;
 }
 
-// Method to scale up the triangle
 void TamGiac::PhongTo(double scale) {
     x1 *= scale;
     y1 *= scale;
@@ -44,7 +38,6 @@ void TamGiac::PhongTo(double scale) {
     y3 *= scale;
 }
 
-// Method to scale down the triangle
 void TamGiac::ThuNho(double scale) {
     x1 /= scale;
     y1 /= scale;
@@ -54,13 +47,11 @@ void TamGiac::ThuNho(double scale) {
     y3 /= scale;
 }
 
-// Method to rotate the triangle
 void TamGiac::Quay(double angle) {
-    double radians = angle * (3.14159265358979323846 / 180.0); // Convert degrees to radians
+    double radians = angle * (3.14159265358979323846 / 180.0);
     double cosAngle = cos(radians);
     double sinAngle = sin(radians);
 
-    // Apply rotation to each vertex
     double newX1 = x1 * cosAngle - y1 * sinAngle;
     double newY1 = x1 * sinAngle + y1 * cosAngle;
 
