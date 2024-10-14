@@ -3,20 +3,16 @@
 
 class Diem {
 private:
-    double iHoanh; // x-coordinate
-    double iTung;  // y-coordinate
+    double iHoanh;
+    double iTung;
 
 public:
-    // Default constructor
     Diem();
 
-    // Parameterized constructor
     Diem(double Hoanh, double Tung);
 
-    // Copy constructor
     Diem(const Diem& x);
 
-    // Methods declarations
     void Xuat();
     double GetTungDo();
     double GetHoanhDo();
